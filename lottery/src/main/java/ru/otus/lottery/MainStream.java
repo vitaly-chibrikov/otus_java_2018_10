@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Comparator;
+import java.util.stream.Stream;
 
 /**
  * https://github.com/vitaly-chibrikov/otus_java_2018_10
@@ -16,7 +17,11 @@ import java.util.Comparator;
 
 public class MainStream {
     public static void main(String[] args) throws IOException {
-        String salt = "Void";
+        String salt = "Александр КрасновСилон Пластунски\t\n" +
+                "Никита НазаровHello OTUS\t\n" +
+                "Виталий Метлиновподготовительный - https://otus.ru/online/java/\t\n" +
+                "Dmitry Yurkevich34t43otn94375yg04u9gh3049ug7jdklndsfgf\t\n" +
+                "unnamed#29307TopSecret";
 
         Files.lines(Paths.get(args[0]))
                 .map(String::trim)
