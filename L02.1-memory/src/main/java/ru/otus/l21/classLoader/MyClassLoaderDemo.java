@@ -18,7 +18,7 @@ public class MyClassLoaderDemo {
 
     private void start() throws IOException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         MyClassLoader loader = new MyClassLoader();
-        Class<?> clazz = loader.defineClass("ru.otus.l21.ClassForLoading");
+        Class<?> clazz = loader.defineClass("ru.otus.l21.classLoader.ClassForLoading");
         Method[] methods = clazz.getMethods();
         System.out.println("methods:");
         for(Method method: methods) {
