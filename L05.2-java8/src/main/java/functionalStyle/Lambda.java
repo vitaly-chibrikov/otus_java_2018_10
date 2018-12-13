@@ -1,6 +1,7 @@
 package functionalStyle;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * @author sergey
@@ -24,9 +25,21 @@ public class Lambda {
                                        return lb;
                                      }, new Lambda());
         System.out.println(l.value);
+
+        //int[] initValue - не поле инстанса или класса, но сохраняет свое значение между вызовами функции
+        Supplier<Integer> closure = lambda.generator();
+        System.out.println("1:" + closure.get());
+        System.out.println("2:" + closure.get());
+        System.out.println("3:" + closure.get());
     }
+
 
     private <T,R> R func(Function<T, R> func, T param) {
         return func.apply(param);
+    }
+
+    private Supplier<Integer> generator() {
+        int[] initValue = {0}; //Переменная не только effectively final, но и effectively private :)
+        return () -> ++initValue[0];
     }
 }
