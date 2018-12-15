@@ -12,13 +12,15 @@ class Benchmark implements BenchmarkMBean {
         this.loopCounter = loopCounter;
     }
 
-    void run() {
+    void run() throws InterruptedException {
         for(int idx = 0; idx < loopCounter; idx ++) {
             int local = size;
             Object[] array = new Object[local];
             for (int i = 0; i < local; i++) {
                 array[i] = new String(new char[0]);
+                Thread.sleep(100);
             }
+            Thread.sleep(1_000);
         }
     }
 
@@ -29,6 +31,7 @@ class Benchmark implements BenchmarkMBean {
 
     @Override
     public void setSize(int size) {
+        System.out.println("new size:" + size);
         this.size = size;
     }
 

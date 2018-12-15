@@ -56,7 +56,7 @@ disable concurrent remembered set:
 public class GcDemo {
     public static void main(String... args) throws Exception {
         System.out.println("Starting pid: " + ManagementFactory.getRuntimeMXBean().getName());
-        switchOnMonitoring();
+        //switchOnMonitoring();
         long beginTime = System.currentTimeMillis();
 
         int size = 5 * 1000 * 1000;
