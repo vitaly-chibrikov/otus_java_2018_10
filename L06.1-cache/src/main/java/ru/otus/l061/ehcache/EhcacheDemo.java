@@ -8,8 +8,6 @@ import org.ehcache.config.builders.CacheConfigurationBuilder;
 import org.ehcache.config.builders.CacheEventListenerConfigurationBuilder;
 import org.ehcache.config.builders.CacheManagerBuilder;
 import org.ehcache.config.builders.ResourcePoolsBuilder;
-import org.ehcache.event.CacheEvent;
-import org.ehcache.event.CacheEventListener;
 import org.ehcache.event.EventType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +40,7 @@ public class EhcacheDemo {
     private EhcacheDemo() {
         this.cacheManager = CacheManagerBuilder.newCacheManagerBuilder().build(true);
 
-        CacheEventListenerConfigurationBuilder cacheEventListenerConfiguration = CacheEventListenerConfigurationBuilder
+        var cacheEventListenerConfiguration = CacheEventListenerConfigurationBuilder
                 .newEventListenerConfiguration(event ->
                                 System.out.println("updated key:" + event.getKey() + ", value:" + event.getNewValue())
                         , EventType.CREATED, EventType.UPDATED)
