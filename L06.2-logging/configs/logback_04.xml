@@ -6,7 +6,7 @@
         </encoder>
     </appender>
 
-    <appender name="SYSLOG" class="ch.qos.logback.classic.net.SyslogAppender">
+    <appender name="SYSLOGT" class="ch.qos.logback.classic.net.SyslogAppender">
         <syslogHost>localhost</syslogHost>
         <facility>USER</facility>
         <suffixPattern>[%thread] %logger %msg</suffixPattern>
@@ -14,7 +14,7 @@
 
 
     <logger name="ru.otus.l62.ex04.LoggerSyslogExample" level="info" >
-        <appender-ref ref="SYSLOG" />
+        <appender-ref ref="SYSLOGT" />
     </logger>
 
     <root level="info">

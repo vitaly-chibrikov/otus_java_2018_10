@@ -6,7 +6,7 @@
         </encoder>
     </appender>
 
-    <appender name="ROLL_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>logs/roll.log</file>
         <encoder>
             <pattern>%date %level [%thread] [%file:%line] %msg%n</pattern>
@@ -20,10 +20,8 @@
         </rollingPolicy>
     </appender>
 
-
-
     <logger name="ru.otus.l62.ex03.LoggerRollingPolicyExample" level="info" >
-        <appender-ref ref="ROLL_FILE" />
+        <appender-ref ref="ROLLING" />
     </logger>
 
 
