@@ -6,6 +6,7 @@ package ru.otus.l72.examples;
  */
 public class DependencyInversion {
 
+    /*Правильное применение принципа*/
     class Car {
         private SteeringWheel steeringWheel;
         private Engine engine;
