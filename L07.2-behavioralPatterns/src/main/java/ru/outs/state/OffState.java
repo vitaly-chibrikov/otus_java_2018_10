@@ -6,7 +6,7 @@ package ru.outs.state;
  */
 public class OffState implements State {
     @Override
-    public void performAction() {
+    public void action() {
         System.out.println("темно");
     }
 }

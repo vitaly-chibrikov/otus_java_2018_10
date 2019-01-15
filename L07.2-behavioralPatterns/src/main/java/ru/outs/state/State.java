@@ -5,5 +5,5 @@ package ru.outs.state;
  * created on 12.09.18.
  */
 public interface State {
-    void performAction();
+    void action();
 }

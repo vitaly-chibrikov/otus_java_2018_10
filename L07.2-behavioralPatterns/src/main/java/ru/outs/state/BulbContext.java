@@ -4,13 +4,12 @@ package ru.outs.state;
  * @author sergey
  * created on 12.09.18.
  */
-public class BulbContext implements State {
+public class BulbContext  {
 
     private State state = new OffState();
 
-    @Override
     public void performAction() {
-        state.performAction();
+        state.action();
     }
 
     public State getState() {

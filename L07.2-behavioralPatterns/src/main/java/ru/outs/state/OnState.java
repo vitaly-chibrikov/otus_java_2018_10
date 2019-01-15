@@ -6,7 +6,7 @@ package ru.outs.state;
  */
 public class OnState implements State {
     @Override
-    public void performAction() {
+    public void action() {
         System.out.println("лампа светит");
     }
 }
