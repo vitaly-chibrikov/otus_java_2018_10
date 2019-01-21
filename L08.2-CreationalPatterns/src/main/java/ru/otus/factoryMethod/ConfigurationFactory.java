@@ -1,0 +1,17 @@
+package ru.otus.factoryMethod;
+
+/**
+ * @author sergey
+ * created on 19.09.18.
+ */
+public class ConfigurationFactory {
+    public static Configuration getConfiguration(String param) {
+        if ("file".equals(param)) {
+            return new ConfigurationFile();
+        }
+        if ("db".equals(param)) {
+            return new ConfigurationDB();
+        }
+        throw new IllegalArgumentException("unknown param:" + param);
+    }
+}
