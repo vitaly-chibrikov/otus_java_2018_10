@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+package ru.otus.l091.protobuf;
+
+option java_outer_classname = "HelloWorld";
+
+message HelloMessage {
+  required string message = 1;
+}
