@@ -11,6 +11,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 
 /**
@@ -32,16 +34,18 @@ public class DemoIO {
 
     }
 
+    //Обратите внимание на цепочку декораторов
     private static void copyFile() throws IOException {
-        String fileName = "demoFile.txt";
-        try (BufferedInputStream fis = new BufferedInputStream(new FileInputStream(fileName));
-             BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(fileName + "_copy"))
-        ) {
+        try (ZipOutputStream zipOut = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(textFile + "_copy.zip")));
+             BufferedInputStream bis = new BufferedInputStream(new FileInputStream(textFile))) {
+
+            ZipEntry zipEntry = new ZipEntry(textFile);
+            zipOut.putNextEntry(zipEntry);
             int buffer;
-            while ((buffer = fis.read()) > 0) {
-                fos.write(buffer);
+            while ((buffer = bis.read()) > 0) {
+                zipOut.write(buffer);
             }
-            fos.flush();
+            zipOut.closeEntry();
         }
     }
 
@@ -64,7 +68,7 @@ public class DemoIO {
     private static void writeTextFile() throws IOException {
         String line1 = "Hello Java, str1";
         String line2 = "Hello Java, str2";
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(textFile))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(textFile));) {
             writer.write(line1);
             writer.newLine();
             writer.write(line2);
