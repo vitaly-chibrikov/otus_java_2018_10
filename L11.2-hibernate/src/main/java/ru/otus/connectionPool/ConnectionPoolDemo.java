@@ -26,19 +26,14 @@ public class ConnectionPoolDemo {
     public ConnectionPoolDemo() {
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl(URL);
-        config.setConnectionTimeout(60000); //ms
-        config.setIdleTimeout(2000); //ms
-        config.setMaxLifetime(600000);//ms
-        config.setAutoCommit(false);
-        config.setMinimumIdle(5);
-        config.setMaximumPoolSize(3);
-        config.setPoolName("DemoHiPool");
-        config.setRegisterMbeans(true);
+        config.setConnectionTimeout(60000); //ms This property controls the maximum number of milliseconds that a client (that's you) will wait for a connection from the pool.
+        config.setIdleTimeout(2000); //ms This property controls the maximum amount of time that a connection is allowed to sit idle in the pool.
+        config.setMaxLifetime(600000);//ms This property controls the maximum lifetime of a connection in the pool.
         config.setAutoCommit(true);
-
-        config.addDataSourceProperty("cachePrepStmts", "true");
-        config.addDataSourceProperty("prepStmtCacheSize", "250");
-        config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+        config.setMinimumIdle(5); // This property controls the minimum number of idle connections that HikariCP tries to maintain in the pool.
+        config.setMaximumPoolSize(3); // This property controls the maximum size that the pool is allowed to reach, including both idle and in-use connections.
+        config.setPoolName("DemoHiPool"); // This property represents a user-defined name for the connection pool.
+        config.setRegisterMbeans(true); // This property controls whether or not JMX Management Beans ("MBeans") are registered or not. Default: false.
 
         dataSource = new HikariDataSource(config);
     }
