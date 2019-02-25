@@ -1,14 +1,11 @@
 package ru.otus.timer;
 
-import com.google.gson.Gson;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.util.resource.Resource;
-import ru.otus.user.InMemoryUserDao;
-import ru.otus.user.UserService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -75,25 +72,11 @@ public class TimerMain {
         server.join();
     }
 
-    private UserService userService() {
-        return new UserService(userDao());
-    }
-
-
-    private InMemoryUserDao userDao() {
-        return new InMemoryUserDao();
-    }
-
-    private Gson gson() {
-        return new Gson();
-    }
-
     private void resourcesExample() {
         URL url = TimerMain.class.getResource(PUBLIC_HTML + "/index.html"); //local path starts with '/'
         System.out.println(url);
         try (BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()))) {
             System.out.println(br.readLine());
-
         } catch (IOException e) {
             e.printStackTrace();
         }
