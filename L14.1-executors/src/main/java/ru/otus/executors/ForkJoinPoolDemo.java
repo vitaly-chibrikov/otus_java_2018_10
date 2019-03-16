@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
-import java.util.concurrent.TimeUnit;
 
 public class ForkJoinPoolDemo {
     private static Logger logger = LoggerFactory.getLogger(ForkJoinPoolDemo.class);
