@@ -10,6 +10,15 @@ package ru.otus.process.builder;
  *
  * */
 
+import java.io.IOException;
+
 public class ProcessBuilderApplication {
+
+
+    public static void main(String[] args) throws IOException {
+        ProcessBuilder processBuilder = new ProcessBuilder("ls");
+        processBuilder.start();
+    }
+
 
 }
