@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Client {
     private static Logger logger = LoggerFactory.getLogger(Client.class);
@@ -16,9 +17,11 @@ public class Client {
     private static final String HOST = "localhost";
 
     public static void main(String[] args) {
-        new Thread(() -> new Client().go("testData_1")).start();
-        new Thread(() -> new Client().go("testData_2")).start();
-
+        AtomicInteger a = new AtomicInteger(0);
+        for(int idx = 0; idx < 15; idx++) {
+            new Thread(() -> new Client().go("testData_" + a.incrementAndGet())).start();
+        }
+        //new Thread(() -> new Client().go("testData_2")).start();
     }
 
     private void go(String request) {

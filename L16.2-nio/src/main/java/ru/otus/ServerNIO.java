@@ -35,7 +35,7 @@ public class ServerNIO {
         serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
 
         while (true) {
-            logger.info("waiting for client connection");
+            logger.info("waiting for client");
             if (selector.select() > 0) { //This method performs a blocking
                 performIO(selector);
             }
