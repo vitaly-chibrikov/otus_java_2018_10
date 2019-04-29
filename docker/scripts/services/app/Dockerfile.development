@@ -1,0 +1,7 @@
+FROM openjdk
+ENV PROJECT_ROOT /usr/src/app
+WORKDIR $PROJECT_ROOT
+EXPOSE 8090
+ADD rabbitmqNettyWeb-2018-10.jar application.jar
+CMD java -jar ./application.jar
+

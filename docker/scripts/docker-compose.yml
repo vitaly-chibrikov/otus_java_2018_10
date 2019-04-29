@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+  rabbit:
+    build:
+      context: services/rabbit
+      dockerfile: Dockerfile.development
+    command: rabbitmq-server start
+    ports:
+      - "5672:5672"
+      - "8080:15672"   
+    volumes:
+      - "~/.bash_history:/.bash_history"
+      - "/tmp:/tmp:delegated"
+  app:
+    build:
+      context: services/app
+      dockerfile: Dockerfile.development
+    command: java -jar ./application.jar
+    network_mode: host
+    ports:
+     - "8090:8090"
+    volumes:
+      - "~/.bash_history:/.bash_history"
+      - "/tmp:/tmp:delegated"
+    depends_on:
+      - rabbit
+
